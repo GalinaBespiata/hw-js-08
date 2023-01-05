@@ -7,22 +7,26 @@ const formEl = document.querySelector(".feedback-form");
 
 populateMessage();
 
-const formField ={};
 formEl.addEventListener("input", throttle(onFormInput, 500));
 formEl.addEventListener("submit", onFormSubmit);
+
+ 
 
 function onFormInput(event){
     formField[event.target.name] = event.target.value;
     
     localStorage.setItem(STORAGE_KEY_FEEDBACK, JSON.stringify(formField));
-  
 }
+const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK));
+const formField =savedData || {};
 
 function onFormSubmit(event){
     event.preventDefault();
+    console.log(savedData)
     event.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY_FEEDBACK)
 }
+
 //  const emailData = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).email;
 //  console.log(localStorage)
 // const textAreaData = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).message;
@@ -33,10 +37,10 @@ function onFormSubmit(event){
 // if(textAreaData){
 // textAreaEl.value = textAreaData;
 // }
- function populateMessage(){
-    const savedData = localStorage.getItem(STORAGE_KEY_FEEDBACK);
+function populateMessage(){
+     const savedData = localStorage.getItem(STORAGE_KEY_FEEDBACK);
     if(savedData){
             inputEl.value = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).email || "";
-            textAreaEl.value = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).message || "npm";
+            textAreaEl.value = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).message || "";
         }
         }
