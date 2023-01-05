@@ -21,6 +21,7 @@ function onFormInput(event){
 function onFormSubmit(event){
     event.preventDefault();
     event.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY_FEEDBACK)
 }
 //  const emailData = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).email;
 //  console.log(localStorage)
