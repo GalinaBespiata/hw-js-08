@@ -12,7 +12,6 @@ function onVideoPlayer(event){
      localStorage.setItem(STORAGE_KEY || 0, JSON.stringify(watchedTime))
 }
 iframePlayer.on('timeupdate', throttle(onVideoPlayer, 1000));
-console.log(localStorage)
  
 const startwatching = localStorage.getItem(STORAGE_KEY);
 
