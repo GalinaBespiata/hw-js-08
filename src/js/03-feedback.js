@@ -36,7 +36,7 @@ function onFormSubmit(event){
  function populateMessage(){
     const savedData = localStorage.getItem(STORAGE_KEY_FEEDBACK);
     if(savedData){
-            inputEl.value = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).email;
-            textAreaEl.value = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).message;
+            inputEl.value = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).email || "";
+            textAreaEl.value = JSON.parse(localStorage.getItem(STORAGE_KEY_FEEDBACK)).message || "npm";
         }
         }
